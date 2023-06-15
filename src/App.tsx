@@ -1,32 +1,39 @@
 import React from "react";
 import "./App.css";
 import Button from "./Components/Button";
-import { useEffect, useState } from "react";
-import { Service } from "./models";
-import { Meal } from "./models";
-
-interface Meals {
-  resutls: Meal[];
-}
+import { useState } from "react";
 
 const App: React.FC = () => {
-  const [meal, setMeal] = useState<Service<Meals>>({ status: "loading" });
+  const [data, setData] = useState<string>("");
 
-  const HandleCLick = (e: React.FormEvent) => {
+  const handleClick = (e: React.MouseEvent) => {
     e.preventDefault();
-    useEffect(() => {
-      fetch("https://www.themealdb.com/api/json/v1/1/random.php")
-        .then((response) => response.json())
-        .then((response) => setMeal({ status: "loaded", payload: response }))
-        .catch((error) => setMeal({ status: "error", error }));
-    }, []);
-    return meal;
+
+    async function fetchingData(): Promise<any> {
+      try {
+        const response = await fetch("https://www.themealdb.com/api/json/v1/1/random.php");
+        const data = await response.json();
+        setData(data);
+        if (response.ok) {
+          // Success (Good Response)
+          return data;
+        } else {
+          // Failure (Bad Response)
+          console.error("Bad Response");
+        }
+      } catch (error) {
+        // Failure (Network error, etc)
+        console.error(error);
+      }
+    }
+    fetchingData();
   };
 
+  console.log(data)
   return (
     <div className="App">
       <h1>Feeling Hungry?</h1>
-      <Button handleClick={HandleCLick} />
+      <Button handleClick={handleClick} />
     </div>
   );
 };

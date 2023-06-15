@@ -1,14 +1,14 @@
 import React from "react";
 
 
-interface Props {
-  handleClick: (e: React.FormEvent) => void;
+interface Props{
+  handleClick : (e: React.MouseEvent) => void
 }
 
-const Button = ({ handleClick }: Props) => {
+const Button = ({handleClick} :Props) => {
   return (
-    <form className="buttonForm" onSubmit={(e)=>handleClick(e)}>
-      <button className="buttonMeal" type="submit">
+    <form className="buttonForm">
+      <button className="buttonMeal" type="button" onClick={(e)=>handleClick(e)}>
         Get A Meal!
       </button>
     </form>
