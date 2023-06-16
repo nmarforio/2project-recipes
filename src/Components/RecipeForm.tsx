@@ -1,29 +1,20 @@
-
-
 interface Props {
-  recipeData: {
-    [key: string]: any;
-  };
+    recipeData: {[key: string]: any;}
 }
-interface ObjectRecipe { [meal: string]: any;}
+interface ObjectRecipe {
+  [meal: string]: any;
+}
 
-// array.map(val => <IKeys>{
-//   key1: val.key1,
-//   key2: val.key2
-// });
-
-const RecipeForm = ({ recipeData }: Props) => {
+const RecipeForm = ( {recipeData} : Props) : void => {
   recipeData.meals?.forEach((meal: object) => console.log(meal, "ForEach"));
-  const objectRecipe: Array<object> = recipeData.meals?.map((meal : ObjectRecipe) => {
-    return console.log(meal, "MAP")
-  })
-  
-
-
-  return (
-    <div>
-      <p>a</p>
-    </div>
+  recipeData.meals?.map(
+    (meal: ObjectRecipe) => {
+      return (
+        <div>
+          <p>{meal.strMeal}</p>
+        </div>
+      );
+    }
   );
 };
 
