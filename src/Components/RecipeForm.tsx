@@ -1,20 +1,28 @@
-import React from "react";
-import Recipe from "../model";
+
 
 interface Props {
-    recipeData: Recipe[];
-
+  recipeData: {
+    [key: string]: any;
+  };
 }
+interface ObjectRecipe { [meal: string]: any;}
+
+// array.map(val => <IKeys>{
+//   key1: val.key1,
+//   key2: val.key2
+// });
 
 const RecipeForm = ({ recipeData }: Props) => {
-  console.log(recipeData);
-//  const myRecipe: Array<string> =  recipeData.meals.map((meal)=>{
-//     return meal 
-//   })
-//   console.log(myRecipe)
+  recipeData.meals?.forEach((meal: object) => console.log(meal, "ForEach"));
+  const objectRecipe: Array<object> = recipeData.meals?.map((meal : ObjectRecipe) => {
+    return console.log(meal, "MAP")
+  })
+  
+
+
   return (
     <div>
-      <p>Hola</p>
+      <p>a</p>
     </div>
   );
 };

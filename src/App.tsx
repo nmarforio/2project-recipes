@@ -3,10 +3,9 @@ import "./App.css";
 import Button from "./Components/Button";
 import RecipeForm from "./Components/RecipeForm";
 import { useState } from "react";
-import Recipe from "./model";
 
 const App: React.FC<{}> = () => {
-  const [recipe, setRecipe] = useState<Recipe[]>([]);
+  const [recipe, setRecipe] = useState<{ [key: string]: any }>({});
 
   const handleClick = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -32,7 +31,7 @@ const App: React.FC<{}> = () => {
     }
     fetchingData();
   };
-
+  console.log(recipe);
   return (
     <div className="App">
       <h2>Feeling Hungry?</h2>
