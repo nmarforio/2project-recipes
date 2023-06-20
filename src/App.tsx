@@ -123,10 +123,10 @@ const App: React.FC<{}> = (): any => {
               </div>
               <div className="ratio">
                 <h4>Video Recipe</h4>
-                <iframe
+                <iframe width="500" height="315"
                   id="YoutubeVideo"
                   key={meal.idMeal}
-                  src={`https://www.youtube.com/embed/${meal.strYoutube}`}
+                  src={`https://www.youtube.com/embed/${meal.strYoutube.slice(-11)}`}
                   title="YouTube video"
                 ></iframe>
               </div>
