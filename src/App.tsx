@@ -1,10 +1,13 @@
 import React from "react";
 import "./App.css";
 import Button from "./Components/Button";
-import RecipeForm from "./Components/RecipeForm";
 import { useState } from "react";
 
-const App: React.FC<{}> = () => {
+interface ObjectRecipe {
+  [meal: string]: any;
+}
+
+const App: React.FC<{}> = (): any => {
   const [recipe, setRecipe] = useState<{ [key: string]: any }>({});
 
   const handleClick = (e: React.MouseEvent) => {
@@ -31,14 +34,50 @@ const App: React.FC<{}> = () => {
     }
     fetchingData();
   };
-  console.log(recipe);
+  console.log(recipe.meals);
+
+  const ingridiets : Array<string> = []
+
+  for (let i = 1; i<= 20; i++){
+    if(recipe.meals.)
+    }
+  }
+
   return (
-    <div className="App">
-      <h2>Feeling Hungry?</h2>
-      <h3>get a random Meal by clicking below</h3>
-      <Button handleClick={handleClick} />
-      <RecipeForm recipeData={recipe} />
-    </div>
+    <>
+      <div className="App">
+        <h2>Feeling Hungry?</h2>
+        <h3>get a random Meal by clicking below</h3>
+        <Button handleClick={handleClick} />
+      </div>
+      {recipe.meals?.map((meal: ObjectRecipe) => {
+        return (
+          <>
+            <div className="recipeDiv">
+              <h3>{meal.strMeal}</h3>
+            </div>
+            <div className="ratio ratio-16x9">
+              <h4>Video Recipe</h4>
+              <iframe
+                id="YoutubeVideo"
+                key={meal.idMeal}
+                src={`https://www.youtube.com/embed/${meal.strYoutube}`}
+                title="YouTube video"
+              ></iframe>
+            </div>
+            <div className="ingridientDiv">
+              <h4>Ingridients:</h4>
+              <p></p>
+            </div>
+            <span className="instructoinSpan">
+              <h4>Instruction</h4>
+              <p>{meal.strInstructions}</p>
+              <img key={meal.idMela} src={meal.strMealThumb} alt="mealPic" />
+            </span>
+          </>
+        );
+      })}
+    </>
   );
 };
 
