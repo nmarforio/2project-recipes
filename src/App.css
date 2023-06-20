@@ -1,31 +1,50 @@
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@100;400&display=swap");
+
 .App {
   text-align: center;
+  display: grid;
+  grid-template-columns: (3, 2fr);
+  gap: 10px;
+  grid-auto-rows: minmax(100px, auto);
+  font-family: "Raleway", sans-serif;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.button {
+  grid-column: 1/4;
+  grid-row: 1;
+  padding-bottom: 50px;
+  border-bottom: dotted 2px rgb(218, 107, 107);
+  background: rgb(255, 255, 255);
+  background: linear-gradient(
+    0deg,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 159, 159, 1) 100%
+  );
+}
+.buttonMeal {
+  background-color: rgb(218, 107, 107);
+  padding: 30px;
+  border-radius: 50%;
+  border: none;
+  box-shadow: 4px 4px 5px 0px rgba(220, 108, 108, 0.75);
+}
+.ratio {
+  grid-column: 2;
+  grid-row: 3;
+}
+
+.instructoinSpan {
+  padding: 15px;
+}
+.mealTitle {
+  margin: 10px;
+  grid-row: 2/4;
+}
+.ingridientDiv{
+  border: dotted 2px rgb(218, 107, 107);
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
 }
 
 @keyframes App-logo-spin {
