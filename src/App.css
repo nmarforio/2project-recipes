@@ -21,6 +21,10 @@
     rgba(255, 159, 159, 1) 100%
   );
 }
+.svgDiv{
+  grid-column: 2;
+  margin-top: 100px;
+}
 .buttonMeal {
   background-color: rgb(218, 107, 107);
   padding: 30px;
@@ -47,7 +51,7 @@
 @media (prefers-reduced-motion: no-preference) {
 }
 
-@keyframes App-logo-spin {
+@keyframes svgClassName{
   from {
     transform: rotate(0deg);
   }
