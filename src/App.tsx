@@ -8,23 +8,6 @@ interface ObjectRecipe {
 }
 
 const App: React.FC<{}> = (): any => {
-  // const [ingredientsMeal, setIngredientsMeal] = useState<{ [key:string]: any}> ({})
-  // function mealFunction(meal: ObjectRecipe){
-  //   const ingredients : ObjectRecipe= [];
-  //   setIngredientsMeal(ingredients)
-  //   // Get all ingredients from the object. Up to 20
-  //   for (let i = 1; i <= 20; i++) {
-  //     if (meal[`strIngredient${i}`]) {
-  //       ingredients.push(
-  //         `${meal[`strIngredient${i}`]} - ${meal[`strMeasure${i}`]}`
-  //       );
-  //     } else {
-  //       // Stop if there are no more ingredients
-  //       break;
-  //     }
-  //   }
-  // }
-  // console.log(ingredientsMeal,"PLEASE WORK!")
   const [recipe, setRecipe] = useState<{ [key: string]: any }>({});
 
   const handleClick = (e: React.MouseEvent) => {
@@ -51,23 +34,31 @@ const App: React.FC<{}> = (): any => {
       }
     }
     fetchingData();
+
+    showImg(recipe);
+  };
+  const [recipeData, setRecipeData] = useState(false)
+  
+  function showImg(jsonData: ObjectRecipe) {
+    if (jsonData){
+      const recipeData : boolean = true
+      return setRecipeData(recipeData)
+    }
   }
+  console.log(recipeData);
 
   console.log(recipe);
- 
-
-  //   let ingredientsArray : Array <object> = []
-  //  recipe.meals?.map((meal : ObjectRecipe, i: number)=>{
-  //     if(meal.strIngredient[i]){
-  //     ingredientsArray.push(meal.strIngredient[i])}
-  //     return console.log(ingredientsArray)
-  //   })
 
   return (
     <>
       <div className="App">
-        <div className="svgDiv">
-          <img id='image'src="Food.svg" alt="svgIcon"/>
+        <div className="svgDiv" style={{gridRow: recipeData ? '5':'2' }}>
+          <img
+            id="image"
+            src="Food.svg"
+            alt="svgIcon"
+            style={{ display: recipeData ? "none" : "block" }}
+          />
         </div>
 
         <div className="button">

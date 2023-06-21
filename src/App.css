@@ -39,6 +39,7 @@
 
 .instructoinSpan {
   padding: 15px;
+  grid-column: 2;
 }
 .mealTitle {
   margin: 10px;
