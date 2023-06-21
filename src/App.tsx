@@ -52,6 +52,7 @@ const App: React.FC<{}> = (): any => {
   return (
     <>
       <div className="App">
+       
         <div className="svgDiv" style={{gridRow: recipeData ? '5':'2' }}>
           <img
             id="image"
